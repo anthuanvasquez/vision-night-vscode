@@ -1,0 +1,21 @@
+{
+  "name": "vision-night",
+  "displayName": "Vision Night",
+  "description": "Theme with high readability and low eye strain",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Vision Night",
+        "uiTheme": "vs-dark",
+        "path": "./themes/Vision Night-color-theme.json"
+      }
+    ]
+  }
+}

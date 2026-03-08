@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vision Night - Color Palette</title>
+    <title>Vision Night - Full Design System & Syntax Guide</title>
     <style>
         :root {
             /* Core Palette */
-            --bg: #16161E;
+            --bg: #151520;
             --fg: #D5D6E1;
-            --border: #292E42;
-            --sidebar: #16161E;
+            --border: #2A2F46;
+            --sidebar: #151520;
             --elevated: #1E1E28;
             --inset: #101017;
             
@@ -18,23 +18,22 @@
             --fg-secondary: #A9ADC1;
             --fg-muted: #565F89;
             
-            /* Syntax */
-            --comment: #828BB8;
-            --keyword: #C792EA;
-            --function: #82AAFF;
-            --string: #C3E88D;
-            --type: #FFC777;
-            --variable: #89DDFF;
-            --tag: #F07178;
+            /* Syntax Mapping */
+            --comment: #6A7191;
+            --keyword: #B07CD6;
+            --function: #6F9EF5;
+            --string: #A9D67A;
+            --type: #E8B463;
+            --variable: #74C9E8;
+            --tag: #E96A75;
             --constant: #FF9E64;
+            --bracket: #A9ADC1;
             
-            /* Feedback */
-            --selection: #283457;
-            --link: #82AAFF;
-            --error: #F7768E;
-            --warning: #E0AF68;
-            --info: #7AA2F7;
-            --success: #9ECE6A;
+            /* UI Specials */
+            --cursor: #E6E6E6;
+            --line-highlight: #1A1A26;
+            --active-line-border: #3A3F5A;
+            --selection: #2F3C63;
         }
 
         body {
@@ -47,271 +46,362 @@
         }
 
         header {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto 40px;
             border-bottom: 1px solid var(--border);
             padding-bottom: 20px;
         }
 
-        h1 {
-            margin: 0;
-            font-size: 2rem;
-            color: var(--function);
+        h1 { margin: 0; font-size: 2rem; color: var(--function); }
+        p.subtitle { color: var(--fg-secondary); margin: 8px 0 0; }
+
+        .section-title {
+            max-width: 1200px;
+            margin: 40px auto 20px;
+            font-size: 1.2rem;
+            color: var(--type);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            border-left: 4px solid var(--function);
+            padding-left: 15px;
         }
 
-        p.subtitle {
-            color: var(--fg-secondary);
-            margin: 8px 0 0;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
+        /* Palette Swatches Grid */
+        .palette-grid {
+            max-width: 1200px;
+            margin: 0 auto 60px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
         }
 
-        section {
+        .swatch-card {
             background: var(--elevated);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 24px;
+            padding: 20px;
         }
 
-        h2 {
-            margin: 0 0 20px;
-            font-size: 1.1rem;
+        .swatch-card h3 {
+            margin: 0 0 16px;
+            font-size: 0.9rem;
             color: var(--fg-secondary);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .color-group {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
         }
 
         .color-item {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
+            margin-bottom: 12px;
         }
 
+        .color-item:last-child { margin-bottom: 0; }
+
         .swatch {
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             flex-shrink: 0;
         }
 
-        .color-info {
+        .color-info { display: flex; flex-direction: column; }
+        .color-label { font-size: 0.85rem; font-weight: 600; }
+        .color-hex { font-family: monospace; font-size: 0.75rem; color: var(--fg-muted); }
+
+        /* Multi-Language Guide Grid */
+        .dashboard {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+            gap: 32px;
+        }
+
+        .lang-block {
+            background: var(--elevated);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
         }
 
-        .label {
-            font-size: 0.9rem;
-            font-weight: 600;
+        .lang-block h2 {
+            margin: 0 0 16px;
+            font-size: 1rem;
+            color: var(--fg-secondary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .hex {
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-            font-size: 0.8rem;
+        .lang-block h2 span {
+            font-size: 0.7rem;
+            background: var(--bg);
+            padding: 4px 8px;
+            border-radius: 4px;
             color: var(--fg-muted);
         }
 
-        /* Syntax Preview */
         .preview-box {
-            grid-column: 1 / -1;
             background: var(--bg);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 32px;
+            border-radius: 8px;
+            padding: 20px;
             font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             overflow-x: auto;
+            white-space: pre;
+            flex-grow: 1;
+            position: relative;
         }
 
-        .code-comment { color: var(--comment); font-style: italic; }
-        .code-keyword { color: var(--keyword); font-style: italic; }
-        .code-function { color: var(--function); }
-        .code-string { color: var(--string); }
-        .code-type { color: var(--type); }
-        .code-variable { color: var(--variable); }
-        .code-tag { color: var(--tag); }
-        .code-constant { color: var(--constant); }
-        .code-punctuation { color: var(--fg-muted); }
+        /* Syntax Classes */
+        .c { color: var(--comment); font-style: italic; }
+        .k { color: var(--keyword); font-style: italic; }
+        .f { color: var(--function); }
+        .s { color: var(--string); }
+        .t { color: var(--type); }
+        .v { color: var(--variable); }
+        .tg { color: var(--tag); }
+        .co { color: var(--constant); }
+        .p { color: var(--fg-muted); }
+        .b { color: var(--bracket); }
+        .attr { color: var(--variable); }
+
+        .active-line {
+            background: var(--line-highlight);
+            border-left: 2px solid var(--function);
+            margin-left: -20px;
+            padding-left: 18px;
+        }
+
+        .cursor-sim {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background: var(--cursor);
+            vertical-align: middle;
+            margin-left: 1px;
+        }
 
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Vision Night Palette</h1>
-        <p class="subtitle">Optimized for accessibility, myopia, and eye strain.</p>
+        <h1>Vision Night Refined</h1>
+        <p class="subtitle">Complete Design System & Multi-Language Syntax Guide. Optimized for Myopia & Long Sessions.</p>
     </header>
 
-    <div class="container">
+    <div class="section-title">Global Palette (60/30/10)</div>
+    
+    <div class="palette-grid">
         <!-- Surfaces -->
-        <section>
-            <h2>Surfaces & UI</h2>
-            <div class="color-group">
-                <div class="color-item">
-                    <div class="swatch" style="background: var(--bg);"></div>
-                    <div class="color-info">
-                        <span class="label">Base Background (Editor)</span>
-                        <span class="hex">#16161E</span>
-                    </div>
-                </div>
-                <div class="color-item">
-                    <div class="swatch" style="background: var(--elevated);"></div>
-                    <div class="color-info">
-                        <span class="label">Elevated (Widgets/Tabs)</span>
-                        <span class="hex">#1E1E28</span>
-                    </div>
-                </div>
-                <div class="color-item">
-                    <div class="swatch" style="background: var(--inset);"></div>
-                    <div class="color-info">
-                        <span class="label">Inset (Inputs/Terminal)</span>
-                        <span class="hex">#101017</span>
-                    </div>
-                </div>
-                <div class="color-item">
-                    <div class="swatch" style="background: var(--border);"></div>
-                    <div class="color-info">
-                        <span class="label">Borders & Lines</span>
-                        <span class="hex">#292E42</span>
-                    </div>
+        <div class="swatch-card">
+            <h3>Surfaces & UI</h3>
+            <div class="color-item">
+                <div class="swatch" style="background: var(--bg);"></div>
+                <div class="color-info">
+                    <span class="color-label">Deep Background</span>
+                    <span class="color-hex">#151520</span>
                 </div>
             </div>
-        </section>
+            <div class="color-item">
+                <div class="swatch" style="background: var(--elevated);"></div>
+                <div class="color-info">
+                    <span class="color-label">Surface (Elevated)</span>
+                    <span class="color-hex">#1E1E28</span>
+                </div>
+            </div>
+            <div class="color-item">
+                <div class="swatch" style="background: var(--border);"></div>
+                <div class="color-info">
+                    <span class="color-label">Borders</span>
+                    <span class="color-hex">#2A2F46</span>
+                </div>
+            </div>
+            <div class="color-item">
+                <div class="swatch" style="background: var(--line-highlight);"></div>
+                <div class="color-info">
+                    <span class="color-label">Line Highlight</span>
+                    <span class="color-hex">#1A1A26</span>
+                </div>
+            </div>
+        </div>
 
         <!-- Syntax -->
-        <section>
-            <h2>Syntax (Pastels)</h2>
-            <div class="color-group">
-                <div class="color-item">
-                    <div class="swatch" style="background: var(--function);"></div>
-                    <div class="color-info">
-                        <span class="label">Functions / Methods</span>
-                        <span class="hex">#82AAFF</span>
-                    </div>
-                </div>
-                <div class="color-item">
-                    <div class="swatch" style="background: var(--keyword);"></div>
-                    <div class="color-info">
-                        <span class="label">Keywords</span>
-                        <span class="hex">#C792EA</span>
-                    </div>
-                </div>
-                <div class="color-item">
-                    <div class="swatch" style="background: var(--string);"></div>
-                    <div class="color-info">
-                        <span class="label">Strings</span>
-                        <span class="hex">#C3E88D</span>
-                    </div>
-                </div>
-                <div class="color-item">
-                    <div class="swatch" style="background: var(--type);"></div>
-                    <div class="color-info">
-                        <span class="label">Types / Classes</span>
-                        <span class="hex">#FFC777</span>
-                    </div>
-                </div>
-                <div class="color-item">
-                    <div class="swatch" style="background: var(--variable);"></div>
-                    <div class="color-info">
-                        <span class="label">Variables / Props</span>
-                        <span class="hex">#89DDFF</span>
-                    </div>
+        <div class="swatch-card">
+            <h3>Muted Syntax</h3>
+            <div class="color-item">
+                <div class="swatch" style="background: var(--function);"></div>
+                <div class="color-info">
+                    <span class="color-label">Functions</span>
+                    <span class="color-hex">#6F9EF5</span>
                 </div>
             </div>
-        </section>
-
-        <!-- Feedback -->
-        <section>
-            <h2>Feedback & Others</h2>
-            <div class="color-group">
-                <div class="color-item">
-                    <div class="swatch" style="background: var(--comment);"></div>
-                    <div class="color-info">
-                        <span class="label">Comments (Signature)</span>
-                        <span class="hex">#828BB8</span>
-                    </div>
-                </div>
-                <div class="color-item">
-                    <div class="swatch" style="background: var(--selection);"></div>
-                    <div class="color-info">
-                        <span class="label">Selection</span>
-                        <span class="hex">#283457</span>
-                    </div>
-                </div>
-                <div class="color-item">
-                    <div class="swatch" style="background: var(--error);"></div>
-                    <div class="color-info">
-                        <span class="label">Error</span>
-                        <span class="hex">#F7768E</span>
-                    </div>
-                </div>
-                <div class="color-item">
-                    <div class="swatch" style="background: var(--tag);"></div>
-                    <div class="color-info">
-                        <span class="label">HTML/JSX Tags</span>
-                        <span class="hex">#F07178</span>
-                    </div>
+            <div class="color-item">
+                <div class="swatch" style="background: var(--keyword);"></div>
+                <div class="color-info">
+                    <span class="color-label">Keywords</span>
+                    <span class="color-hex">#B07CD6</span>
                 </div>
             </div>
-        </section>
-
-        <!-- Code Preview -->
-        <div class="preview-box">
-            <div class="code-comment">// Vision Night: Accessibility first</div>
-            <div>
-                <span class="code-keyword">import</span> 
-                <span class="code-punctuation">{</span> 
-                <span class="code-variable">React</span> 
-                <span class="code-punctuation">}</span> 
-                <span class="code-keyword">from</span> 
-                <span class="code-string">'react'</span><span class="code-punctuation">;</span>
+            <div class="color-item">
+                <div class="swatch" style="background: var(--string);"></div>
+                <div class="color-info">
+                    <span class="color-label">Strings</span>
+                    <span class="color-hex">#A9D67A</span>
+                </div>
             </div>
-            <br>
-            <div>
-                <span class="code-keyword">export const</span> 
-                <span class="code-function">ThemeComponent</span> 
-                <span class="code-punctuation">= ({</span> 
-                <span class="code-variable">active</span> 
-                <span class="code-punctuation">}:</span> 
-                <span class="code-type">Props</span><span class="code-punctuation">) => {</span>
+            <div class="color-item">
+                <div class="swatch" style="background: var(--type);"></div>
+                <div class="color-info">
+                    <span class="color-label">Types / Interfaces</span>
+                    <span class="color-hex">#E8B463</span>
+                </div>
             </div>
-            <div style="padding-left: 20px;">
-                <span class="code-keyword">const</span> 
-                <span class="code-variable">version</span> 
-                <span class="code-punctuation">=</span> 
-                <span class="code-constant">2.0</span><span class="code-punctuation">;</span>
-            </div>
-            <div style="padding-left: 20px;">
-                <span class="code-keyword">return</span> 
-                <span class="code-punctuation">(</span>
-            </div>
-            <div style="padding-left: 40px;">
-                <span class="code-tag">&lt;div</span> 
-                <span class="code-variable">className</span><span class="code-punctuation">=</span><span class="code-string">"vision-night"</span><span class="code-tag">&gt;</span>
-            </div>
-            <div style="padding-left: 60px;">
-                Soft Sharpness for your eyes.
-            </div>
-            <div style="padding-left: 40px;">
-                <span class="code-tag">&lt;/div&gt;</span>
-            </div>
-            <div style="padding-left: 20px;">
-                <span class="code-punctuation">);</span>
-            </div>
-            <div class="code-punctuation">};</div>
         </div>
+
+        <!-- Accessibility -->
+        <div class="swatch-card">
+            <h3>Accessibility Details</h3>
+            <div class="color-item">
+                <div class="swatch" style="background: var(--comment);"></div>
+                <div class="color-info">
+                    <span class="color-label">Comments (Signature)</span>
+                    <span class="color-hex">#6A7191</span>
+                </div>
+            </div>
+            <div class="color-item">
+                <div class="swatch" style="background: var(--cursor);"></div>
+                <div class="color-info">
+                    <span class="color-label">High-Vis Cursor</span>
+                    <span class="color-hex">#E6E6E6</span>
+                </div>
+            </div>
+            <div class="color-item">
+                <div class="swatch" style="background: var(--active-line-border);"></div>
+                <div class="color-info">
+                    <span class="color-label">Active Line Border</span>
+                    <span class="color-hex">#3A3F5A</span>
+                </div>
+            </div>
+            <div class="color-item">
+                <div class="swatch" style="background: var(--selection);"></div>
+                <div class="color-info">
+                    <span class="color-label">Selection</span>
+                    <span class="color-hex">#2F3C63</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Multi-Language Syntax Guide</div>
+
+    <div class="dashboard">
+
+        <!-- REACT (TSX) -->
+        <div class="lang-block">
+            <h2>React (TSX) <span>Hooks & Components</span></h2>
+            <div class="preview-box">
+<span class="k">import</span> <span class="b">{</span> <span class="v">useState</span><span class="p">,</span> <span class="v">useEffect</span> <span class="b">}</span> <span class="k">from</span> <span class="s">'react'</span><span class="p">;</span>
+
+<span class="k">export const</span> <span class="f">UserDashboard</span> <span class="p">=</span> <span class="b">(</span><span class="b">{</span> <span class="v">id</span> <span class="b">}</span><span class="p">:</span> <span class="t">Props</span><span class="b">)</span> <span class="p">=></span> <span class="b">{</span>
+  <span class="k">const</span> <span class="b">[</span><span class="v">data</span><span class="p">,</span> <span class="v">setData</span><span class="b">]</span> <span class="p">=</span> <span class="f">useState</span><span class="b">(</span><span class="k">null</span><span class="b">)</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="b">(</span>
+    <span class="b">&lt;</span><span class="tg">div</span> <span class="attr">className</span><span class="p">=</span><span class="s">"p-4 flex gap-2"</span><span class="b">&gt;</span>
+      <span class="b">&lt;</span><span class="f">CustomCard</span> <span class="attr">user</span><span class="p">=</span><span class="b">{</span><span class="v">user</span><span class="b">}</span> <span class="attr">active</span> <span class="b">/&gt;</span><span class="cursor-sim"></span>
+      <span class="b">&lt;</span><span class="tg">span</span><span class="b">&gt;</span><span class="b">{</span><span class="v">data</span><span class="p">.</span><span class="v">name</span><span class="b">}</span><span class="b">&lt;/</span><span class="tg">span</span><span class="b">&gt;</span>
+    <span class="b">&lt;/</span><span class="tg">div</span><span class="b">&gt;</span>
+  <span class="b">)</span><span class="p">;</span>
+<span class="b">}</span></div>
+        </div>
+
+        <!-- TYPESCRIPT / NODE.JS -->
+        <div class="lang-block">
+            <h2>TS / Node.js <span>Backend logic</span></h2>
+            <div class="preview-box">
+<span class="k">import</span> <span class="v">express</span><span class="p">,</span> <span class="b">{</span> <span class="t">Request</span><span class="p">,</span> <span class="t">Response</span> <span class="b">}</span> <span class="k">from</span> <span class="s">'express'</span><span class="p">;</span>
+
+<span class="k">interface</span> <span class="t">ServerConfig</span> <span class="b">{</span>
+  <span class="v">port</span><span class="p">:</span> <span class="t">number</span><span class="p">;</span>
+  <span class="v">env</span><span class="p">:</span> <span class="s">'dev'</span> <span class="p">|</span> <span class="s">'prod'</span><span class="p">;</span>
+<span class="b">}</span>
+
+<span class="k">async function</span> <span class="f">bootstrap</span><span class="b">(</span><span class="v">config</span><span class="p">:</span> <span class="t">ServerConfig</span><span class="b">)</span> <span class="b">{</span>
+  <span class="k">const</span> <span class="v">app</span> <span class="p">=</span> <span class="f">express</span><span class="b">()</span><span class="p">;</span>
+  
+  <span class="v">app</span><span class="p">.</span><span class="f">get</span><span class="b">(</span><span class="s">'/api/v1'</span><span class="p">,</span> <span class="b">(</span><span class="v">req</span><span class="p">:</span> <span class="t">Request</span><span class="p">,</span> <span class="v">res</span><span class="p">:</span> <span class="t">Response</span><span class="b">)</span> <span class="p">=></span> <span class="b">{</span>
+    <span class="v">res</span><span class="p">.</span><span class="f">json</span><span class="b">({</span> <span class="v">status</span><span class="p">:</span> <span class="co">200</span><span class="p">,</span> <span class="v">msg</span><span class="p">:</span> <span class="s">'Vision Night Active'</span> <span class="b">})</span><span class="p">;</span>
+  <span class="b">}</span><span class="b">)</span><span class="p">;</span>
+<span class="b">}</span></div>
+        </div>
+
+        <!-- HTML / TAILWIND -->
+        <div class="lang-block">
+            <h2>HTML 5 / Tailwind <span>v4 Utilities</span></h2>
+            <div class="preview-box">
+<span class="b">&lt;</span><span class="tg">header</span> <span class="attr">class</span><span class="p">=</span><span class="s">"bg-slate-900 border-b border-white/10"</span><span class="b">&gt;</span>
+  <span class="b">&lt;</span><span class="tg">nav</span> <span class="attr">class</span><span class="p">=</span><span class="s">"max-w-7xl mx-auto px-4 sm:px-6"</span><span class="b">&gt;</span>
+    <span class="b">&lt;</span><span class="tg">div</span> <span class="attr">class</span><span class="p">=</span><span class="s">"flex justify-between h-16 items-center"</span><span class="b">&gt;</span>
+      <span class="b">&lt;</span><span class="tg">img</span> <span class="attr">src</span><span class="p">=</span><span class="s">"/logo.svg"</span> <span class="attr">alt</span><span class="p">=</span><span class="s">"Vision Night"</span> <span class="b">/&gt;</span>
+      <span class="b">&lt;</span><span class="tg">button</span> <span class="attr">type</span><span class="p">=</span><span class="s">"button"</span> <span class="attr">class</span><span class="p">=</span><span class="s">"btn-primary"</span><span class="b">&gt;</span>
+        Get Started
+      <span class="b">&lt;/</span><span class="tg">button</span><span class="b">&gt;</span>
+    <span class="b">&lt;/</span><span class="tg">div</span><span class="b">&gt;</span>
+  <span class="b">&lt;/</span><span class="tg">nav</span><span class="b">&lt;/</span><span class="tg">header</span><span class="b">&gt;</span></div>
+        </div>
+
+        <!-- CSS / POSTCSS -->
+        <div class="lang-block">
+            <h2>Modern CSS <span>Variables & Mix</span></h2>
+            <div class="preview-box">
+<span class="p">@</span><span class="k">layer</span> <span class="v">base</span> <span class="b">{</span>
+  <span class="p">:</span><span class="v">root</span> <span class="b">{</span>
+    <span class="v">--primary</span><span class="p">:</span> <span class="co">#6f9ef5</span><span class="p">;</span>
+  <span class="b">}</span>
+<span class="b">}</span>
+
+<span class="p">.</span><span class="f">main-card</span> <span class="b">{</span>
+  <span class="v">display</span><span class="p">:</span> <span class="v">grid</span><span class="p">;</span>
+  <span class="v">grid-template-columns</span><span class="p">:</span> <span class="f">repeat</span><span class="b">(</span><span class="co">auto-fit</span><span class="p">,</span> <span class="co">minmax</span><span class="b">(</span><span class="co">200px</span><span class="p">,</span> <span class="co">1fr</span><span class="b">)</span><span class="b">)</span><span class="p">;</span>
+  <span class="v">background</span><span class="p">:</span> <span class="f">color-mix</span><span class="b">(</span><span class="k">in</span> <span class="v">srgb</span><span class="p">,</span> <span class="v">var</span><span class="b">(</span><span class="v">--primary</span><span class="b)</span><span class="p">,</span> <span class="v">transparent</span> <span class="co">20%</span><span class="b">)</span><span class="p">;</span>
+<span class="b">}</span></div>
+        </div>
+
+        <!-- PHP -->
+        <div class="lang-block">
+            <h2>Modern PHP <span>8.x Features</span></h2>
+            <div class="preview-box">
+<span class="p">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="v">App\Services</span><span class="p">;</span>
+
+<span class="k">readonly class</span> <span class="t">ThemeService</span>
+<span class="b">{</span>
+    <span class="k">public function</span> <span class="f">__construct</span><span class="b">(</span>
+        <span class="k">private</span> <span class="t">string</span> <span class="v">$themeName</span> <span class="p">=</span> <span class="s">'Vision Night'</span>
+    <span class="b">)</span> <span class="b">{}</span>
+<span class="b">}</span></div>
+        </div>
+
+        <!-- VUE / ANGULAR MIX -->
+        <div class="lang-block">
+            <h2>Vue 3 / Angular <span>Signals</span></h2>
+            <div class="preview-box">
+<span class="c">// Vue Ref</span>
+<span class="k">const</span> <span class="v">count</span> <span class="p">=</span> <span class="f">ref</span><span class="b">(</span><span class="co">0</span><span class="b">)</span><span class="p">;</span>
+
+<span class="c">// Angular Signal</span>
+<span class="v">title</span> <span class="p">=</span> <span class="f">signal</span><span class="b">(</span><span class="s">'Vision Night'</span><span class="b">)</span><span class="p">;</span>
+
+<span class="f">effect</span><span class="b">(()</span> <span class="p">=></span> <span class="v">console</span><span class="p">.</span><span class="f">log</span><span class="b">(</span><span class="v">this</span><span class="p">.</span><span class="v">title</span><span class="b">()</span><span class="b">))</span><span class="p">;</span></div>
+        </div>
+
     </div>
 
 </body>

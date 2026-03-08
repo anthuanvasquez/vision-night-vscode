@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision Night - Color Palette</title>
+    <style>
+        :root {
+            /* Core Palette */
+            --bg: #16161E;
+            --fg: #D5D6E1;
+            --border: #292E42;
+            --sidebar: #16161E;
+            --elevated: #1E1E28;
+            --inset: #101017;
+            
+            /* Typography */
+            --fg-secondary: #A9ADC1;
+            --fg-muted: #565F89;
+            
+            /* Syntax */
+            --comment: #828BB8;
+            --keyword: #C792EA;
+            --function: #82AAFF;
+            --string: #C3E88D;
+            --type: #FFC777;
+            --variable: #89DDFF;
+            --tag: #F07178;
+            --constant: #FF9E64;
+            
+            /* Feedback */
+            --selection: #283457;
+            --link: #82AAFF;
+            --error: #F7768E;
+            --warning: #E0AF68;
+            --info: #7AA2F7;
+            --success: #9ECE6A;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            line-height: 1.5;
+        }
+
+        header {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: var(--function);
+        }
+
+        p.subtitle {
+            color: var(--fg-secondary);
+            margin: 8px 0 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        section {
+            background: var(--elevated);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        h2 {
+            margin: 0 0 20px;
+            font-size: 1.1rem;
+            color: var(--fg-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .color-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .color-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .swatch {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .color-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .label {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .hex {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.8rem;
+            color: var(--fg-muted);
+        }
+
+        /* Syntax Preview */
+        .preview-box {
+            grid-column: 1 / -1;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.95rem;
+            overflow-x: auto;
+        }
+
+        .code-comment { color: var(--comment); font-style: italic; }
+        .code-keyword { color: var(--keyword); font-style: italic; }
+        .code-function { color: var(--function); }
+        .code-string { color: var(--string); }
+        .code-type { color: var(--type); }
+        .code-variable { color: var(--variable); }
+        .code-tag { color: var(--tag); }
+        .code-constant { color: var(--constant); }
+        .code-punctuation { color: var(--fg-muted); }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Vision Night Palette</h1>
+        <p class="subtitle">Optimized for accessibility, myopia, and eye strain.</p>
+    </header>
+
+    <div class="container">
+        <!-- Surfaces -->
+        <section>
+            <h2>Surfaces & UI</h2>
+            <div class="color-group">
+                <div class="color-item">
+                    <div class="swatch" style="background: var(--bg);"></div>
+                    <div class="color-info">
+                        <span class="label">Base Background (Editor)</span>
+                        <span class="hex">#16161E</span>
+                    </div>
+                </div>
+                <div class="color-item">
+                    <div class="swatch" style="background: var(--elevated);"></div>
+                    <div class="color-info">
+                        <span class="label">Elevated (Widgets/Tabs)</span>
+                        <span class="hex">#1E1E28</span>
+                    </div>
+                </div>
+                <div class="color-item">
+                    <div class="swatch" style="background: var(--inset);"></div>
+                    <div class="color-info">
+                        <span class="label">Inset (Inputs/Terminal)</span>
+                        <span class="hex">#101017</span>
+                    </div>
+                </div>
+                <div class="color-item">
+                    <div class="swatch" style="background: var(--border);"></div>
+                    <div class="color-info">
+                        <span class="label">Borders & Lines</span>
+                        <span class="hex">#292E42</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Syntax -->
+        <section>
+            <h2>Syntax (Pastels)</h2>
+            <div class="color-group">
+                <div class="color-item">
+                    <div class="swatch" style="background: var(--function);"></div>
+                    <div class="color-info">
+                        <span class="label">Functions / Methods</span>
+                        <span class="hex">#82AAFF</span>
+                    </div>
+                </div>
+                <div class="color-item">
+                    <div class="swatch" style="background: var(--keyword);"></div>
+                    <div class="color-info">
+                        <span class="label">Keywords</span>
+                        <span class="hex">#C792EA</span>
+                    </div>
+                </div>
+                <div class="color-item">
+                    <div class="swatch" style="background: var(--string);"></div>
+                    <div class="color-info">
+                        <span class="label">Strings</span>
+                        <span class="hex">#C3E88D</span>
+                    </div>
+                </div>
+                <div class="color-item">
+                    <div class="swatch" style="background: var(--type);"></div>
+                    <div class="color-info">
+                        <span class="label">Types / Classes</span>
+                        <span class="hex">#FFC777</span>
+                    </div>
+                </div>
+                <div class="color-item">
+                    <div class="swatch" style="background: var(--variable);"></div>
+                    <div class="color-info">
+                        <span class="label">Variables / Props</span>
+                        <span class="hex">#89DDFF</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback -->
+        <section>
+            <h2>Feedback & Others</h2>
+            <div class="color-group">
+                <div class="color-item">
+                    <div class="swatch" style="background: var(--comment);"></div>
+                    <div class="color-info">
+                        <span class="label">Comments (Signature)</span>
+                        <span class="hex">#828BB8</span>
+                    </div>
+                </div>
+                <div class="color-item">
+                    <div class="swatch" style="background: var(--selection);"></div>
+                    <div class="color-info">
+                        <span class="label">Selection</span>
+                        <span class="hex">#283457</span>
+                    </div>
+                </div>
+                <div class="color-item">
+                    <div class="swatch" style="background: var(--error);"></div>
+                    <div class="color-info">
+                        <span class="label">Error</span>
+                        <span class="hex">#F7768E</span>
+                    </div>
+                </div>
+                <div class="color-item">
+                    <div class="swatch" style="background: var(--tag);"></div>
+                    <div class="color-info">
+                        <span class="label">HTML/JSX Tags</span>
+                        <span class="hex">#F07178</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Code Preview -->
+        <div class="preview-box">
+            <div class="code-comment">// Vision Night: Accessibility first</div>
+            <div>
+                <span class="code-keyword">import</span> 
+                <span class="code-punctuation">{</span> 
+                <span class="code-variable">React</span> 
+                <span class="code-punctuation">}</span> 
+                <span class="code-keyword">from</span> 
+                <span class="code-string">'react'</span><span class="code-punctuation">;</span>
+            </div>
+            <br>
+            <div>
+                <span class="code-keyword">export const</span> 
+                <span class="code-function">ThemeComponent</span> 
+                <span class="code-punctuation">= ({</span> 
+                <span class="code-variable">active</span> 
+                <span class="code-punctuation">}:</span> 
+                <span class="code-type">Props</span><span class="code-punctuation">) => {</span>
+            </div>
+            <div style="padding-left: 20px;">
+                <span class="code-keyword">const</span> 
+                <span class="code-variable">version</span> 
+                <span class="code-punctuation">=</span> 
+                <span class="code-constant">2.0</span><span class="code-punctuation">;</span>
+            </div>
+            <div style="padding-left: 20px;">
+                <span class="code-keyword">return</span> 
+                <span class="code-punctuation">(</span>
+            </div>
+            <div style="padding-left: 40px;">
+                <span class="code-tag">&lt;div</span> 
+                <span class="code-variable">className</span><span class="code-punctuation">=</span><span class="code-string">"vision-night"</span><span class="code-tag">&gt;</span>
+            </div>
+            <div style="padding-left: 60px;">
+                Soft Sharpness for your eyes.
+            </div>
+            <div style="padding-left: 40px;">
+                <span class="code-tag">&lt;/div&gt;</span>
+            </div>
+            <div style="padding-left: 20px;">
+                <span class="code-punctuation">);</span>
+            </div>
+            <div class="code-punctuation">};</div>
+        </div>
+    </div>
+
+</body>
+</html>

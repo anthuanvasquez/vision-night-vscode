@@ -41,5 +41,6 @@
         "path": "./themes/Vision Night-color-theme.json"
       }
     ]
-  }
+  },
+  "icon": "icon.png"
 }

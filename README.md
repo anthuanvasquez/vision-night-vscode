@@ -20,6 +20,22 @@ Most dark themes fail by using pure black backgrounds (#000000) and pure white t
 - **Unified UI**: Sidebar, Activity Bar, and Editor share a harmonious depth to prevent constant eye refocusing.
 - **Multi-Language Support**: Optimized for React (TSX), TypeScript, Vue, Angular, Tailwind, PHP, and Modern JS.
 
+## 🎨 Color Palette
+
+| Element | Hex | Role |
+| :--- | :--- | :--- |
+| **Background** | `#151520` | Core surface (60%) |
+| **Foreground** | `#D5D6E1` | Primary text (30%) |
+| **Selection** | `#2F3C63` | Active selection |
+| **Comments** | `#6A7191` | Muted documentation |
+| **Functions** | `#6F9EF5` | Logic and methods |
+| **Keywords** | `#B07CD6` | Control flow |
+| **Strings** | `#A9D67A` | Text literals |
+| **Types** | `#E8B463` | Classes and interfaces |
+| **Variables** | `#74C9E8` | Props and attributes |
+| **Errors** | `#FF6B7D` | Critical feedback |
+| **Tags** | `#E96A75` | HTML/JSX elements |
+
 ## 🛠 Installation
 
 1. Open **Extensions** sidebar panel in VS Code. `View → Extensions`.

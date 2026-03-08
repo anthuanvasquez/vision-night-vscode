@@ -1,0 +1,14 @@
+# Build artifacts
+*.vsix
+
+# VS Code internals
+.vscode/*
+!.vscode/launch.json
+.vscode-test/
+
+# Dependencies
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db

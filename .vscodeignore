@@ -1,4 +1,9 @@
 .vscode/**
 .vscode-test/**
 .gitignore
-vsc-extension-quickstart.md
+.git/**
+*.vsix
+
+# Dev only files (not needed in the final extension)
+palette.html
+GEMINI.md

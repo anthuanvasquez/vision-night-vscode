@@ -1,14 +1,38 @@
 {
   "name": "vision-night",
   "displayName": "Vision Night",
-  "description": "Theme with high readability and low eye strain",
+  "description": "Professional theme optimized for high readability, accessibility, and eye strain reduction.",
   "version": "0.1.0",
+  "publisher": "anthuanvasquez",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.109.0"
   },
+  "keywords": [
+    "theme",
+    "dark",
+    "accessibility",
+    "myopia",
+    "eye-strain",
+    "tokyo-night",
+    "react",
+    "typescript"
+  ],
   "categories": [
     "Themes"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anthuanvasquez/vision-night-vscode"
+  },
+  "homepage": "https://github.com/anthuanvasquez/vision-night-vscode",
+  "bugs": {
+    "url": "https://github.com/anthuanvasquez/vision-night-vscode/issues"
+  },
+  "galleryBanner": {
+    "color": "#151520",
+    "theme": "dark"
+  },
   "contributes": {
     "themes": [
       {

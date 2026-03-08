@@ -2,7 +2,7 @@
 
 A professional VS Code theme meticulously crafted for high readability, eye strain reduction, and accessibility. Based on the Tokyo Night aesthetic but refined for developers with myopia and long-session fatigue.
 
-![Vision Night Preview](https://raw.githubusercontent.com/anthuanvasquez/vision-night-vscode/main/assets/preview.png)
+![Vision Night Preview](assets/preview.png)
 
 ## 🧠 The Philosophy: "Soft Sharpness"
 

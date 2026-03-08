@@ -2,6 +2,12 @@
 
 All notable changes to the "Vision Night" theme will be documented in this file.
 
+## [0.1.1] - 2026-03-07
+
+### Added
+- Extension icon included in the package.
+- Visual assets for Marketplace preview.
+
 ## [0.1.0] - 2026-03-07
 
 ### Added

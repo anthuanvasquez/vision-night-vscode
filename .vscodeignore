@@ -5,5 +5,7 @@
 *.vsix
 
 # Dev only files (not needed in the final extension)
-palette.html
-GEMINI.md
+.github/**
+scripts/**
+tests/**
+*.py

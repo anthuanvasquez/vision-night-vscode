@@ -10,7 +10,8 @@
   },
   "scripts": {
     "build": "python3 scripts/build.py",
-    "test": "python3 scripts/build.py && python3 tests/test_theme.py"
+    "test": "python3 scripts/build.py && python3 tests/test_theme.py",
+    "package": "npm run test && npx --yes @vscode/vsce package"
   },
   "keywords": [
     "theme",

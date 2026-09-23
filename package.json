@@ -8,6 +8,9 @@
   "engines": {
     "vscode": "^1.109.0"
   },
+  "scripts": {
+    "test": "python3 tests/test_theme.py"
+  },
   "keywords": [
     "theme",
     "dark",

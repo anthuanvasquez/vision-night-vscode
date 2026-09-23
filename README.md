@@ -21,27 +21,36 @@ Most dark themes fail by using pure black backgrounds (#000000) and pure white t
 - **Multi-Language Support**: Optimized for React (TSX), TypeScript, Vue, Angular, Tailwind, PHP, and Modern JS.
 - **Broad Syntax Compatibility**: Clean, essential token coverage across TypeScript, TSX, Vue, Python, PHP, CSS, and Markdown without visual clutter.
 
-## Color Palette
+## 🌗 Theme Variants
 
-| Element | Hex | Role | Contrast (on Editor) |
+Vision Night includes two dark variants calibrated for different ambient lighting conditions:
+
+| Variant | Editor Canvas | Base Chrome | Recommended Lighting |
 | :--- | :--- | :--- | :--- |
-| **Canvas Base** | `#151520` | Sidebar, activity bar, and window chrome | — |
-| **Editor Canvas** | `#1A1A26` | Main editor and terminal surface | — |
-| **Line Highlight** | `#212130` | Active line depth cue (subtly elevated) | — |
-| **Surface** | `#1E1E28` | Widgets, popups, inputs, and dropdowns | — |
-| **Border** | `#2A2F46` | Structural separation and container edges | — |
-| **Foreground** | `#D5D6E1` | Primary text (WCAG AAA) | `11.92:1` |
-| **Secondary / Operators** | `#A9ADC1` | Operators, delimiters, and tag brackets | `7.74:1` |
-| **Selection** | `#2F3C63` | Active selection and match highlights | — |
-| **Comments** | `#7E87AA` | Readable documentation (WCAG AA) | `4.86:1` |
-| **Functions** | `#6F9EF5` | Methods and executable logic | `6.47:1` |
-| **Keywords** | `#B07CD6` | Control flow and storage modifiers | `5.49:1` |
-| **Strings** | `#A9D67A` | Text literals and templates | `10.32:1` |
-| **Types** | `#E8B463` | Classes, types, and interfaces | `9.13:1` |
-| **Variables / Props** | `#74C9E8` | Variables, properties, and attributes | `9.23:1` |
-| **Constants** | `#C89A6A` | Numbers, booleans, and enum members | `6.79:1` |
-| **Tags** | `#D47D8A` | HTML/JSX elements | `5.82:1` |
-| **Errors** | `#FF6B7D` | Diagnostics and critical alerts | `6.27:1` |
+| **Vision Night (Default)** | `#1A1A26` | `#151520` | **Night & low-light**: Deep background absorbs glare and completely eliminates the halo effect (*light bleeding*). |
+| **Vision Night Storm** | `#222436` | `#1B1C2A` | **Daytime & well-lit rooms**: Softly elevated canvas eliminates luminance disparity between bright room lighting and the editor. |
+
+## 🎨 Color Palette
+
+| Element | Hex | Role | Contrast (Default / Storm) |
+| :--- | :--- | :--- | :--- |
+| **Canvas Base** | `#151520` / `#1B1C2A` | Sidebar, activity bar, and window chrome | — |
+| **Editor Canvas** | `#1A1A26` / `#222436` | Main editor and terminal surface | — |
+| **Line Highlight** | `#212130` / `#292C42` | Active line depth cue (subtly elevated) | — |
+| **Surface** | `#1E1E28` / `#272A3E` | Widgets, popups, inputs, and dropdowns | — |
+| **Border** | `#2A2F46` / `#323753` | Structural separation and container edges | — |
+| **Foreground** | `#D5D6E1` | Primary text (WCAG AAA) | `11.92:1` / `10.58:1` |
+| **Secondary / Operators** | `#A9ADC1` | Operators, delimiters, and tag brackets | `7.74:1` / `6.87:1` |
+| **Selection** | `#2F3C63` / `#364470` | Active selection and match highlights | — |
+| **Comments** | `#828BAE` | Readable documentation (WCAG AA) | `5.13:1` / `4.55:1` |
+| **Functions** | `#6F9EF5` | Methods and executable logic | `6.47:1` / `5.74:1` |
+| **Keywords** | `#B07CD6` | Control flow and storage modifiers | `5.49:1` / `4.88:1` |
+| **Strings** | `#A9D67A` | Text literals and templates | `10.32:1` / `9.16:1` |
+| **Types** | `#E8B463` | Classes, types, and interfaces | `9.13:1` / `8.11:1` |
+| **Variables / Props** | `#74C9E8` | Variables, properties, and attributes | `9.23:1` / `8.20:1` |
+| **Constants** | `#C89A6A` | Numbers, booleans, and enum members | `6.79:1` / `6.03:1` |
+| **Tags** | `#D47D8A` | HTML/JSX elements | `5.82:1` / `5.17:1` |
+| **Errors** | `#FF6B7D` | Diagnostics and critical alerts | `6.27:1` / `5.57:1` |
 
 ## UI Hierarchy
 
@@ -110,6 +119,50 @@ Add these recommended settings to your `settings.json` to optimize typography an
   // Clear structural tracking
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": "active"
+}
+```
+
+## Customization
+
+You can easily tweak any color in Vision Night without editing the extension files directly. Open your VS Code `settings.json` (`Cmd + Shift + P` / `Ctrl + Shift + P` → `Preferences: Open User Settings (JSON)`) and add your overrides scoped to `[Vision Night]`:
+
+### Overriding UI / Workbench Colors
+To tweak UI elements such as the background, line highlight, or sidebar:
+
+```json
+"workbench.colorCustomizations": {
+  "[Vision Night]": {
+    // Example: make the editor background slightly darker or lighter
+    "editor.background": "#151520",
+
+    // Example: change active line highlight border
+    "editor.lineHighlightBorder": "#2A2F46",
+
+    // Example: adjust sidebar color
+    "sideBar.background": "#101017"
+  }
+}
+```
+
+### Overriding Syntax / Token Colors
+To tweak syntax elements like comments, keywords, or variables:
+
+```json
+"editor.tokenColorCustomizations": {
+  "[Vision Night]": {
+    "comments": "#A9ADC1",         // Make comments even brighter
+    "keywords": "#C678DD",         // Customize keyword tone
+    "functions": "#7AA2F7",        // Alternate blue for function calls
+    "strings": "#98C379",          // Custom string literal color
+    "textMateRules": [
+      {
+        "scope": "comment",
+        "settings": {
+          "fontStyle": ""          // Disable italics for comments if preferred
+        }
+      }
+    ]
+  }
 }
 ```
 

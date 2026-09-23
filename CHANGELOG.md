@@ -5,14 +5,17 @@ All notable changes to the "Vision Night" theme will be documented in this file.
 ## [0.2.0] - 2026-04-29
 
 ### Added
-- Automated theme validation test (`tests/test_theme.py`) checking strict JSON, line highlight depth, and WCAG AA contrast.
+- **Vision Night Storm** theme variant calibrated for well-lit and daytime environments (`#222436` canvas).
+- Automated theme generator (`scripts/build.py`) ensuring 100% token synchronization across all variants.
+- Multi-theme validation suite (`tests/test_theme.py`) checking strict JSON, line highlight elevation, and WCAG AA contrast across all variants.
 - Recommended setup and accessibility guidelines in `README.md` (Catppuccin Icons, typography, and ocular rhythm settings).
+- Customization guide in `README.md` with examples for UI and token overrides.
 - Relocated and consolidated design system documentation into `docs/`.
 
 ### Changed
-- Improved accessibility for myopia: elevated comment contrast to `#7E87AA` (4.86:1, WCAG AA) and structural punctuation/operators to `#A9ADC1` (7.74:1).
+- Improved accessibility for myopia: elevated comment contrast to `#828BAE` (>= 4.5:1 WCAG AA on all variants) and structural punctuation/operators to `#A9ADC1` (>= 6.87:1).
 - Corrected UI layer hierarchy: set editor background to `#1A1A26` and active line highlight to `#212130` (eliminating inverted darker highlight).
-- Streamlined `themes/Vision Night-color-theme.json` by removing redundant micro-scopes and aligning with the 15-color palette.
+- Streamlined theme files by removing redundant micro-scopes and aligning with the 15-color palette.
 - Removed invalid comments and cleaned JSON formatting.
 
 ## [0.1.1] - 2026-03-07

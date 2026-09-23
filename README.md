@@ -77,6 +77,12 @@ To preview changes locally:
 
 For precise token inspection, use **Developer: Inspect Editor Tokens and Scopes**.
 
+To build a validated installable package, run:
+
+```sh
+npm run package
+```
+
 ## Installation
 
 1. Open **Extensions** sidebar panel in VS Code. `View → Extensions`.

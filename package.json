@@ -2,11 +2,16 @@
   "name": "vision-night",
   "displayName": "Vision Night",
   "description": "Professional theme optimized for high readability, accessibility, and eye strain reduction.",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "publisher": "anthuanvasquez",
   "license": "MIT",
   "engines": {
     "vscode": "^1.109.0"
+  },
+  "scripts": {
+    "build": "python3 scripts/build.py",
+    "test": "python3 scripts/build.py && python3 tests/test_theme.py",
+    "package": "npm run test && npx --yes @vscode/vsce package"
   },
   "keywords": [
     "theme",
@@ -39,6 +44,11 @@
         "label": "Vision Night",
         "uiTheme": "vs-dark",
         "path": "./themes/Vision Night-color-theme.json"
+      },
+      {
+        "label": "Vision Night Storm",
+        "uiTheme": "vs-dark",
+        "path": "./themes/Vision Night Storm-color-theme.json"
       }
     ]
   },

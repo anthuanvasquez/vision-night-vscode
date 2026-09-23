@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import json
-import re
 from pathlib import Path
 
 def lum(hex_str):
@@ -13,40 +12,50 @@ def contrast(c1, c2):
     l1, l2 = lum(c1), lum(c2)
     return (max(l1, l2) + 0.05) / (min(l1, l2) + 0.05)
 
-def main():
-    root = Path(__file__).resolve().parent.parent
-    theme_file = root / "themes" / "Vision Night-color-theme.json"
-    
-    # 1. Must parse as strict JSON (no trailing commas, no JS comments)
+def validate_theme(theme_file: Path):
+    print(f"\nValidating {theme_file.name}...")
     with open(theme_file, "r", encoding="utf-8") as f:
         theme = json.load(f)
-    
+
     colors = theme["colors"]
     editor_bg = colors["editor.background"]
     line_hl = colors["editor.lineHighlightBackground"]
-    
-    # 2. Line highlight must NOT be darker than the editor background
+
+    # 1. Line highlight must not be darker than editor
     assert lum(line_hl) >= lum(editor_bg), (
-        f"Line highlight ({line_hl}, lum {lum(line_hl):.5f}) is darker than editor ({editor_bg}, lum {lum(editor_bg):.5f})!"
+        f"Line highlight ({line_hl}) is darker than editor ({editor_bg})!"
     )
-    
-    # 3. Primary text and comments must meet WCAG AA (>= 4.5:1) on editor background
+
+    # 2. Text and comments contrast on editor canvas
     fg = colors["foreground"]
     fg_contrast = contrast(fg, editor_bg)
     assert fg_contrast >= 4.5, f"Foreground contrast {fg_contrast:.2f}:1 fails WCAG AA!"
-    
+
     comment_token = next(
         t for t in theme["tokenColors"] if "comment" in t.get("scope", [])
     )
     comment_color = comment_token["settings"]["foreground"]
     comment_contrast = contrast(comment_color, editor_bg)
-    assert comment_contrast >= 4.5, f"Comment contrast {comment_contrast:.2f}:1 fails WCAG AA!"
-    
-    print("All theme assertions passed successfully!")
-    print(f"- Editor BG: {editor_bg} (lum: {lum(editor_bg):.5f})")
-    print(f"- Line Highlight: {line_hl} (lum: {lum(line_hl):.5f})")
-    print(f"- Foreground contrast: {fg_contrast:.2f}:1 (WCAG AA pass)")
-    print(f"- Comment contrast: {comment_contrast:.2f}:1 (WCAG AA pass)")
+    assert comment_contrast >= 4.5, (
+        f"Comment contrast {comment_contrast:.2f}:1 ({comment_color}) fails WCAG AA on {editor_bg}!"
+    )
+
+    print(f"  ✓ Valid strict JSON")
+    print(f"  ✓ Editor BG: {editor_bg} (lum: {lum(editor_bg):.5f})")
+    print(f"  ✓ Line Highlight: {line_hl} (lum: {lum(line_hl):.5f})")
+    print(f"  ✓ Foreground contrast: {fg_contrast:.2f}:1 (WCAG AA pass)")
+    print(f"  ✓ Comment contrast: {comment_contrast:.2f}:1 (WCAG AA pass)")
+
+def main():
+    root = Path(__file__).resolve().parent.parent
+    themes_dir = root / "themes"
+    theme_files = sorted(themes_dir.glob("*.json"))
+    assert len(theme_files) >= 2, f"Expected at least 2 themes, found {len(theme_files)}"
+
+    for tf in theme_files:
+        validate_theme(tf)
+
+    print(f"\nAll {len(theme_files)} themes passed all accessibility and validity checks!")
 
 if __name__ == "__main__":
     main()

@@ -9,7 +9,8 @@
     "vscode": "^1.109.0"
   },
   "scripts": {
-    "test": "python3 tests/test_theme.py"
+    "build": "python3 scripts/build.py",
+    "test": "python3 scripts/build.py && python3 tests/test_theme.py"
   },
   "keywords": [
     "theme",
@@ -42,6 +43,11 @@
         "label": "Vision Night",
         "uiTheme": "vs-dark",
         "path": "./themes/Vision Night-color-theme.json"
+      },
+      {
+        "label": "Vision Night Storm",
+        "uiTheme": "vs-dark",
+        "path": "./themes/Vision Night Storm-color-theme.json"
       }
     ]
   },

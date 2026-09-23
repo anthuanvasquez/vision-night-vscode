@@ -1,25 +1,24 @@
 # Vision Night
 
-A professional VS Code theme meticulously crafted for high readability, eye strain reduction, and accessibility. Based on the Tokyo Night aesthetic but refined for developers with myopia and long-session fatigue.
+A professional VS Code theme crafted for high readability, reduced visual noise, and accessible contrast. Based on the Tokyo Night aesthetic and tuned for long coding sessions.
 
 ![Vision Night Preview](assets/preview.png)
 
 ## The Philosophy: "Soft Sharpness"
 
-Most dark themes fail by using pure black backgrounds (#000000) and pure white text (#FFFFFF), creating a "halo effect" that causes extreme eye fatigue for people with myopia or astigmatism.
+Pure black backgrounds (#000000) and pure white text (#FFFFFF) can create harsh perceived glare for some developers during long sessions.
 
-**Vision Night** solves this by applying the **60/30/10 Rule**:
+**Vision Night** applies the **60/30/10 Rule** to help reduce that effect:
 - **60% Deep Background (#151520)**: A midnight blue that absorbs light without being pitch black.
 - **30% Syntax Base (#D5D6E1)**: Bluish-white text that is sharp but soft on the retina.
 - **10% Highlight Colors**: Desaturated pasteles that highlight logic without deslumbrating.
 
 ## Key Features
 
-- **Accessibility First**: Meets WCAG AA/AAA contrast standards.
-- **Myopia Friendly**: Neutralized structural punctuation (brackets, tags) to keep the focus on the code that matters.
+- **Accessible Contrast**: Core text meets WCAG AAA; documented syntax tokens meet WCAG AA on both editor canvases.
+- **Reduced Visual Noise**: Structural punctuation and tag delimiters are neutralized to keep focus on the code that matters.
 - **Unified UI**: Sidebar, Activity Bar, and Editor share a harmonious depth to prevent constant eye refocusing.
-- **Multi-Language Support**: Optimized for React (TSX), TypeScript, Vue, Angular, Tailwind, PHP, and Modern JS.
-- **Broad Syntax Compatibility**: Clean, essential token coverage across TypeScript, TSX, Vue, Python, PHP, CSS, and Markdown without visual clutter.
+- **Broad Syntax Compatibility**: Clean, essential token coverage for modern JavaScript, TypeScript, TSX, Vue, Python, PHP, CSS, and Markdown without visual clutter.
 
 ## 🌗 Theme Variants
 
@@ -27,8 +26,8 @@ Vision Night includes two dark variants calibrated for different ambient lightin
 
 | Variant | Editor Canvas | Base Chrome | Recommended Lighting |
 | :--- | :--- | :--- | :--- |
-| **Vision Night (Default)** | `#1A1A26` | `#151520` | **Night & low-light**: Deep background absorbs glare and completely eliminates the halo effect (*light bleeding*). |
-| **Vision Night Storm** | `#222436` | `#1B1C2A` | **Daytime & well-lit rooms**: Softly elevated canvas eliminates luminance disparity between bright room lighting and the editor. |
+| **Vision Night (Default)** | `#1A1A26` | `#151520` | **Night & low-light**: Deep background helps reduce perceived glare. |
+| **Vision Night Storm** | `#222436` | `#1B1C2A` | **Daytime & well-lit rooms**: A lighter canvas reduces the perceived contrast with a bright environment. |
 
 ## 🎨 Color Palette
 
@@ -72,7 +71,7 @@ To preview changes locally:
 
 1. Press `F5` in this workspace.
 2. In the new **Extension Development Host** window, open **Preferences: Color Theme**.
-3. Select **Vision Night**.
+3. Select **Vision Night** or **Vision Night Storm**.
 4. Open the Explorer, a Markdown file, and the integrated terminal to review the hierarchy.
 5. After editing the theme file, run **Developer: Reload Window** in that host window.
 
@@ -87,7 +86,7 @@ For precise token inspection, use **Developer: Inspect Editor Tokens and Scopes*
 
 ## Recommended Setup & Settings
 
-For maximum eye comfort and an optimal accessibility experience (especially during long sessions or for developers with myopia/astigmatism), pair Vision Night with the following configuration:
+For a more comfortable, accessible setup during long sessions, pair Vision Night with the following configuration:
 
 ### 1. Recommended Icon Theme: Catppuccin Icons
 Standard icon packs often use oversaturated, primary colors that turn the file explorer into a high-contrast rainbow, forcing your eyes to constantly refocus. **Catppuccin Icons (Macchiato or Mocha flavor)** uses soft, muted pastel tones that harmonize with Vision Night's palette without visual clutter.
@@ -119,6 +118,24 @@ Add these recommended settings to your `settings.json` to optimize typography an
   // Clear structural tracking
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": "active"
+}
+```
+
+### 3. Recommended Indentation Guides: Indent Rainbow
+For a subtle visual guide in deeply nested code, configure [Indent Rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow) to use thin lines drawn from the Vision Night syntax palette:
+
+```json
+{
+  "indentRainbow.indicatorStyle": "light",
+  "indentRainbow.lightIndicatorStyleLineWidth": 1,
+  "indentRainbow.colors": [
+    "rgba(111, 158, 245, 0.28)",
+    "rgba(176, 124, 214, 0.26)",
+    "rgba(169, 214, 122, 0.26)",
+    "rgba(232, 180, 99, 0.26)"
+  ],
+  "indentRainbow.errorColor": "rgba(255, 107, 125, 0.60)",
+  "indentRainbow.tabmixColor": "rgba(212, 125, 138, 0.55)"
 }
 ```
 

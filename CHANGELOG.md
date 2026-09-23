@@ -2,7 +2,7 @@
 
 All notable changes to the "Vision Night" theme will be documented in this file.
 
-## [0.2.0] - 2026-04-29
+## [0.2.0] - 2026-09-23
 
 ### Added
 - **Vision Night Storm** theme variant calibrated for well-lit and daytime environments (`#222436` canvas).
@@ -13,6 +13,9 @@ All notable changes to the "Vision Night" theme will be documented in this file.
 - Relocated and consolidated design system documentation into `docs/`.
 
 ### Changed
+- Refined accessibility language to distinguish WCAG AAA core text from WCAG AA syntax-token contrast.
+- Expanded automated validation to cover all TextMate and semantic token foregrounds on both editor canvases.
+- Removed outdated standalone palette visualizers so generated themes remain the source of truth.
 - Improved accessibility for myopia: elevated comment contrast to `#828BAE` (>= 4.5:1 WCAG AA on all variants) and structural punctuation/operators to `#A9ADC1` (>= 6.87:1).
 - Corrected UI layer hierarchy: set editor background to `#1A1A26` and active line highlight to `#212130` (eliminating inverted darker highlight).
 - Streamlined theme files by removing redundant micro-scopes and aligning with the 15-color palette.

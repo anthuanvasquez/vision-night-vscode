@@ -12,6 +12,17 @@ def contrast(c1, c2):
     l1, l2 = lum(c1), lum(c2)
     return (max(l1, l2) + 0.05) / (min(l1, l2) + 0.05)
 
+def foregrounds(theme):
+    for token in theme["tokenColors"]:
+        color = token["settings"].get("foreground")
+        if color:
+            yield token["name"], color
+
+    for name, value in theme["semanticTokenColors"].items():
+        color = value.get("foreground") if isinstance(value, dict) else value
+        if color:
+            yield f"semantic {name}", color
+
 def validate_theme(theme_file: Path):
     print(f"\nValidating {theme_file.name}...")
     with open(theme_file, "r", encoding="utf-8") as f:
@@ -26,25 +37,25 @@ def validate_theme(theme_file: Path):
         f"Line highlight ({line_hl}) is darker than editor ({editor_bg})!"
     )
 
-    # 2. Text and comments contrast on editor canvas
+    # 2. Core text is AAA on the editor canvas
     fg = colors["foreground"]
     fg_contrast = contrast(fg, editor_bg)
-    assert fg_contrast >= 4.5, f"Foreground contrast {fg_contrast:.2f}:1 fails WCAG AA!"
+    assert fg_contrast >= 7, f"Foreground contrast {fg_contrast:.2f}:1 fails WCAG AAA!"
 
-    comment_token = next(
-        t for t in theme["tokenColors"] if "comment" in t.get("scope", [])
-    )
-    comment_color = comment_token["settings"]["foreground"]
-    comment_contrast = contrast(comment_color, editor_bg)
-    assert comment_contrast >= 4.5, (
-        f"Comment contrast {comment_contrast:.2f}:1 ({comment_color}) fails WCAG AA on {editor_bg}!"
-    )
+    # 3. Every documented TextMate and semantic token is AA on the editor canvas
+    syntax_contrasts = []
+    for name, color in foregrounds(theme):
+        token_contrast = contrast(color, editor_bg)
+        assert token_contrast >= 4.5, (
+            f"{name} contrast {token_contrast:.2f}:1 ({color}) fails WCAG AA on {editor_bg}!"
+        )
+        syntax_contrasts.append((name, token_contrast))
 
     print(f"  ✓ Valid strict JSON")
     print(f"  ✓ Editor BG: {editor_bg} (lum: {lum(editor_bg):.5f})")
     print(f"  ✓ Line Highlight: {line_hl} (lum: {lum(line_hl):.5f})")
-    print(f"  ✓ Foreground contrast: {fg_contrast:.2f}:1 (WCAG AA pass)")
-    print(f"  ✓ Comment contrast: {comment_contrast:.2f}:1 (WCAG AA pass)")
+    print(f"  ✓ Foreground contrast: {fg_contrast:.2f}:1 (WCAG AAA pass)")
+    print(f"  ✓ {len(syntax_contrasts)} syntax contrasts meet WCAG AA")
 
 def main():
     root = Path(__file__).resolve().parent.parent
